@@ -1,6 +1,6 @@
 import allure
 
-from data import Data
+from data import Data, Message
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
 
@@ -13,7 +13,7 @@ class TestOrderPage:
         order_page = OrderPage(driver)
 
         main_page.go_to_orders_list()
-        assert order_page.show_order_details_form() == 'Cостав'
+        assert order_page.show_order_details_form() == Message.STRUCTURE
 
     @allure.title('Проверка отображения заказа пользователя в ленте заказов.')
     def test_show_user_order_from_orders_list(self, login):

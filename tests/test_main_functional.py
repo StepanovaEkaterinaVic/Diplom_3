@@ -1,6 +1,6 @@
 import allure
 import pytest
-from data import Data
+from data import Data, Message
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
 
@@ -71,4 +71,4 @@ class TestMainPage:
         main_page = MainPage(login)
 
         main_page.add_ingredients_to_burger(ingredient)
-        assert main_page.confirm_order() == 'Ваш заказ начали готовить'
+        assert main_page.confirm_order() == Message.ORDER_START_PREPARED
