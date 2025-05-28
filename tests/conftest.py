@@ -2,8 +2,8 @@ import curl
 import pytest
 from selenium import webdriver
 from data import Data
-from locators.login_locators import LoginPageLocators
-from locators.main_locators import MainPageLocators
+from pages.login_page import LoginPage
+from pages.main_page import MainPage
 
 
 @pytest.fixture(params=['chrome', 'firefox'])
@@ -22,9 +22,10 @@ def driver(request):
 
 @pytest.fixture
 def login(driver):
-    driver.execute_script("arguments[0].click();", driver.find_element(*MainPageLocators.MAIN_PAGE_BUTTON))
-    driver.find_element(*LoginPageLocators.EMAIL_FIELD).send_keys(Data.TEST_EMAIL)
-    driver.find_element(*LoginPageLocators.PASSWORD_FIELD).send_keys(Data.TEST_PASSWORD)
-    driver.execute_script("arguments[0].click();", driver.find_element(*LoginPageLocators.LOGIN_BUTTON))
+    main_page = MainPage(driver)
+    main_page.click_main_button()
+    login_page = LoginPage(driver)
+    login_page.print_user_email(Data.TEST_EMAIL)
+    login_page.print_user_password(Data.TEST_PASSWORD)
+    login_page.click_login_button()
     return driver
-

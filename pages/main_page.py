@@ -10,6 +10,10 @@ class MainPage(BasePage):
     def go_to_personal_account(self):
         self.click_on_element_action(MainPageLocators.PERSONAL_ACCOUNT_LINK)
 
+    @allure.step('Переход в окно авторизации')
+    def click_main_button(self):
+        self.click(MainPageLocators.MAIN_PAGE_BUTTON)
+
     @allure.step('Открытие ленты заказов.')
     def go_to_orders_list(self):
         self.click_on_element_action(MainPageLocators.ORDERS_LIST_BUTTON)

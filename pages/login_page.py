@@ -15,3 +15,7 @@ class LoginPage(BasePage):
     @allure.step('Ввод почты пользователя.')
     def print_user_email(self, email):
         self.insert_text_in_field(LoginPageLocators.EMAIL_FIELD, email)
+
+    @allure.step('Клик на кнопку "Войти"')
+    def click_login_button(self):
+        self.click(LoginPageLocators.LOGIN_BUTTON)

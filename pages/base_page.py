@@ -70,3 +70,8 @@ class BasePage:
         WebDriverWait(self.driver, 10).until_not(expected_conditions.text_to_be_present_in_element(
             locator, text_to_be_changed))
         return self.driver.find_element(*locator)
+
+    @allure.step('Клик по элементу')
+    def click(self, locator):
+        element = self.driver.find_element(*locator)
+        self.driver.execute_script("arguments[0].click();", element)
